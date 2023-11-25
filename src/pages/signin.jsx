@@ -54,7 +54,7 @@ const Signin = () => {
 
   return (
     <div className="flex justify-center items-center md:h-[90vh] lg:min-h-[660px] xl:min-h-[762px] max-w-[85%] min-w-fit mx-auto mb-10 mt-10">
-      <Card className="container rounded-lg md:h-[90%] w-[90%] xl:w-full min-h-fit">
+      <div className="card shadow-xl rounded-lg md:h-[90%] w-[90%] xl:w-full min-h-fit">
         <div className="flex flex-col-reverse md:flex-row justify-center items-center">
           <form
             className="w-full md:w-1/2 flex flex-col items-start lg:pl-32 md:pl-16 gap-4"
@@ -62,36 +62,33 @@ const Signin = () => {
           >
             <p className="text-3xl lg:text-5xl font-extrabold mb-4">Sign in</p>
 
-            <Input
+            <input
               id="email1"
               placeholder="Email"
               required
               type="email"
               value={email}
               onInput={handleEmailChange}
-              prependIcon={MdEmail}
-              className="w-full max-w-xs lg:max-w-sm py-2 rounded-lg border-gray-300 focus:outline-none focus:ring focus:ring-indigo-500"
+              className="input w-full max-w-xs lg:max-w-sm py-2 rounded-lg border-gray-300 focus:outline-none focus:ring focus:ring-indigo-500"
             />
             <div className="w-full max-w-xs lg:max-w-sm py-2 rounded-md border-gray-300 focus:outline-none focus:ring focus:ring-indigo-500">
-              <Input
+              <input
                 id="password1"
                 placeholder="Password"
                 required
                 type={isVisible ? "text" : "password"}
-                prependIcon={RiLockPasswordFill}
                 value={password}
                 onInput={handlePasswordChange}
-                className="w-full py-2 rounded-md border-gray-300 focus:outline-none focus:ring focus:ring-indigo-500"
+                className="input w-full py-2 rounded-md border-gray-300 focus:outline-none focus:ring focus:ring-indigo-500"
               />
             </div>
 
-            <Button
-              size="lg"
+            <button
               type="submit"
-              className="w-32 self-center md:self-start"
+              className="btn w-32 self-center md:self-start"
             >
               Log in
-            </Button>
+            </button>
             <div className="border-b-2 w-full max-w-xs lg:max-w-sm"></div>
             <p className="text-lg">Or login with</p>
             <FcGoogle
@@ -118,7 +115,7 @@ const Signin = () => {
             </Link>
           </div>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
