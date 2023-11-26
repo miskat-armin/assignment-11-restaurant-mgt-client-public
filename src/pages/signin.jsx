@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { MdEmail } from "react-icons/md";
-import { RiLockPasswordFill } from "react-icons/ri";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/authContext";
@@ -53,9 +51,9 @@ const Signin = () => {
   };
 
   return (
-    <div className="flex justify-center items-center md:h-[90vh] lg:min-h-[660px] xl:min-h-[762px] max-w-[85%] min-w-fit mx-auto mb-10 mt-10">
-      <div className="card shadow-xl rounded-lg md:h-[90%] w-[90%] xl:w-full min-h-fit">
-        <div className="flex flex-col-reverse md:flex-row justify-center items-center">
+    <div className="flex justify-center items-center min-h-screen mx-auto mt-5 md:mt-0">
+      <div className="card flex justify-center shadow-xl md:min-h-[80vh] md:w-[90%] mx-2 rounded-lg w-full border-2">
+        <div className="flex flex-col-reverse md:flex-row justify-center items- mx-2">vb c
           <form
             className="w-full md:w-1/2 flex flex-col items-start lg:pl-32 md:pl-16 gap-4"
             onSubmit={handleSubmit}

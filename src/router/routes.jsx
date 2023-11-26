@@ -17,7 +17,7 @@ const CustomRouter = createBrowserRouter([
         loader: () => fetch("/reviews.json"),
       },
       {
-        path: "/login",
+        path: "/signin",
         element: <Signin />,
       },
       {
