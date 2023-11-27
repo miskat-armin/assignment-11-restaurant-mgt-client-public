@@ -37,7 +37,7 @@ const CustomerReviews = () => {
       {reviews.map((review, idx) => (
         <div
           key={idx}
-          className="card bg-base-100 shadow-lg hover:shadow-xl rounded p-4"
+          className="card bg-base-100 shadow-lg hover:shadow-xl rounded-lg p-4"
         >
           <div className="avatar">
             <div className="w-12 rounded-full">

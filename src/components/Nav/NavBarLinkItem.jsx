@@ -14,7 +14,7 @@ const NavLinkItem = ({ to, label }) => {
           : ""
       }
     >
-      <p className="text-lg">{label}</p>
+      <p className="text-lg dark:text-white">{label}</p>
     </NavLink>
   );
 };
