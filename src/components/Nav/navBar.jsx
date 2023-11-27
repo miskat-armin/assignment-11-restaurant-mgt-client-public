@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
+import { GoSignIn } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import { GoSignIn } from "react-icons/go";
 import NavLinkItem from "./NavBarLinkItem";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const { user, Logout } = useAuth();
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -84,6 +86,15 @@ const Header = () => {
                     {user.email}
                   </span>
                 </li>
+                <li>
+                  <button >My Added Items</button>
+                </li>
+                <li>
+                  <button>My Ordered Items</button>
+                </li>
+                <li>
+                  <button onClick={() => navigate("/add-item")}>Add Item</button>
+                </li>
                 <li className=" hover:bg-gray-200 text-red-500">
                   <button onClick={Logout} className="btn">
                     Logout <FiLogOut />
@@ -109,7 +120,7 @@ const Header = () => {
               <NavLinkItem to="/" label="Home" />
             </li>
             <li>
-              <NavLinkItem to="/all-items" label="History" />
+              <NavLinkItem to="/all-items" label="All items" />
             </li>
             <li>
               <NavLinkItem to="/blog" label="Blog" />

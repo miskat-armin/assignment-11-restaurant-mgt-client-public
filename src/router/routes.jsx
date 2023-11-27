@@ -4,6 +4,9 @@ import ErrorPage from "../pages/errorPage.jsx";
 import Home from "../pages/home";
 import Registration from "../pages/registration.jsx";
 import Signin from "../pages/signin.jsx";
+import Items from "../pages/items.jsx";
+import Blog from "../pages/blog.jsx";
+import AddItem from "../pages/addItem.jsx";
 
 const CustomRouter = createBrowserRouter([
   {
@@ -14,7 +17,6 @@ const CustomRouter = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("/reviews.json"),
       },
       {
         path: "/signin",
@@ -24,6 +26,19 @@ const CustomRouter = createBrowserRouter([
         path: "/registration",
         element: <Registration />,
       },
+      {
+        path: "/all-items",
+        element: <Items />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/add-item",
+        element: <AddItem />,
+      },
+      
     ],
   },
 ]);
