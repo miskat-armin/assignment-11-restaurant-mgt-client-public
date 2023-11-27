@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { MdEmail } from "react-icons/md";
-import { RiLockPasswordFill } from "react-icons/ri";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/authContext";
@@ -9,6 +7,7 @@ import { useAuth } from "../context/authContext";
 const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [isVisible, setIsVisible] = useState(false);
 
   const navigate = useNavigate();
@@ -31,7 +30,17 @@ const Registration = () => {
 
   const handleGoogleLogin = () => {
     GoogleSignIn()
-      .then((res) => {
+      .then(async (res) => {
+        await fetch(import.meta.env.VITE_EXPRESS_API + "/users/create-user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            username: res.user.displayName || username,
+          }),
+        });
         toast.success("Successful Registration");
         navigate(from, { replace: true });
       })
@@ -59,7 +68,14 @@ const Registration = () => {
     }
 
     Registration(email.trim(), password)
-      .then((res) => {
+      .then(async (res) => {
+        await fetch(import.meta.env.VITE_EXPRESS_API + "/users/create-user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, username }),
+        });
         toast.success("Successful log in");
         navigate(from, { replace: true });
       })

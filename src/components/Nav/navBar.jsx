@@ -76,28 +76,28 @@ const Header = () => {
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="avatar m-2">
                 <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src={user.PhotoURL} alt={user.displayName} />
+                  <img src={user.photoURL} alt={user.displayName} />
                 </div>
               </div>
-              <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+              <ul className="dropdown-content z-[1] menu shadow bg-base-100 rounded-box">
                 <li>
                   { user.displayName && <span className="block text-sm">{user.displayName}</span>}
                   <span className="block truncate text-sm font-medium">
                     {user.email}
                   </span>
                 </li>
-                <li>
+                <li className="font-semibold">
                   <button >My Added Items</button>
                 </li>
-                <li>
+                <li className="font-semibold">
                   <button>My Ordered Items</button>
                 </li>
-                <li>
+                <li className="font-semibold">
                   <button onClick={() => navigate("/add-item")}>Add Item</button>
                 </li>
-                <li className=" hover:bg-gray-200 text-red-500">
-                  <button onClick={Logout} className="btn">
-                    Logout <FiLogOut />
+                <li>
+                  <button onClick={Logout} className="text-red-500 font-semibold">
+                    Logout <FiLogOut className="text-red-500"/>
                   </button>
                 </li>
               </ul>
@@ -130,7 +130,7 @@ const Header = () => {
                 <NavLinkItem
                   to="/signin"
                   label={
-                    <span className="flex items-center">
+                    <span className="flex items-center text-green-500 font-semibold">
                       Log in <GoSignIn className="ml-2" />
                     </span>
                   }
