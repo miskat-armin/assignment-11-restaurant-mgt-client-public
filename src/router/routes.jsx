@@ -7,6 +7,7 @@ import Signin from "../pages/signin.jsx";
 import Items from "../pages/items.jsx";
 import Blog from "../pages/blog.jsx";
 import AddItem from "../pages/addItem.jsx";
+import Item from "../pages/item.jsx";
 
 const CustomRouter = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const CustomRouter = createBrowserRouter([
       {
         path: "/add-item",
         element: <AddItem />,
+      },
+      {
+        path: "/:item",
+        element: <Item />,
       },
       
     ],
