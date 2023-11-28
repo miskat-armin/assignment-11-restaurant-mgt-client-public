@@ -9,6 +9,8 @@ import Blog from "../pages/blog.jsx";
 import AddItem from "../pages/addItem.jsx";
 import Item from "../pages/item.jsx";
 import OrderPage from "../pages/orderPage.jsx";
+import OrderedItemsByUser from "../pages/myOrderedItems.jsx";
+import FoodListByUser from "../pages/myAddedItems.jsx";
 
 const CustomRouter = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ const CustomRouter = createBrowserRouter([
         path: "/order-item",
         element: <OrderPage />,
       },
+      {
+        path: "/myOrderedItems",
+        element: <OrderedItemsByUser />,
+      },
+      {
+        path: "/myAddedItems",
+        element: <FoodListByUser />,
+      }
       
     ],
   },

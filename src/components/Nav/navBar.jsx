@@ -81,23 +81,38 @@ const Header = () => {
               </div>
               <ul className="dropdown-content z-[1] menu shadow bg-base-100 rounded-box">
                 <li>
-                  { user?.displayName && <span className="block text-sm">{user?.displayName}</span>}
+                  {user?.displayName && (
+                    <span className="block text-sm">{user?.displayName}</span>
+                  )}
                   <span className="block truncate text-sm font-medium">
                     {user.email}
                   </span>
                 </li>
                 <li className="font-semibold">
-                  <button >My Added Items</button>
+                  <button onClick={() => navigate("/myAddedItems")}>
+                    My Added Items
+                  </button>
                 </li>
                 <li className="font-semibold">
-                  <button>My Ordered Items</button>
+                  <button
+                    onClick={() => {
+                      navigate("/myOrderedItems");
+                    }}
+                  >
+                    My Ordered Items
+                  </button>
                 </li>
                 <li className="font-semibold">
-                  <button onClick={() => navigate("/add-item")}>Add Item</button>
+                  <button onClick={() => navigate("/add-item")}>
+                    Add Item
+                  </button>
                 </li>
                 <li>
-                  <button onClick={Logout} className="text-red-500 font-semibold">
-                    Logout <FiLogOut className="text-red-500"/>
+                  <button
+                    onClick={Logout}
+                    className="text-red-500 font-semibold"
+                  >
+                    Logout <FiLogOut className="text-red-500" />
                   </button>
                 </li>
               </ul>
