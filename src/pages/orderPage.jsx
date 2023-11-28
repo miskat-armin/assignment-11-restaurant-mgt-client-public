@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../context/authContext";
-import { toast } from "react-toastify";
+
 
 const OrderPage = () => {
   const { state } = useLocation();

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import { useAuth } from "../context/authContext";
+import UpdateFoodForm from "../components/Forms/updateForm";
+import { toast } from "react-toastify";
 
 const FoodListByUser = ({ userEmail }) => {
   const [userAddedItems, setUserAddedItems] = useState([]);
@@ -19,16 +21,15 @@ const FoodListByUser = ({ userEmail }) => {
     )
       .then((response) => response.json())
       .then((data) => setUserAddedItems(data))
-      .catch((error) =>
-        console.error("Error fetching user-added items:", error)
-      );
+      .catch((error) => toast.error("Error fetching user-added items:", error));
   }, [user?.email]);
 
   useEffect(() => {
     // Fetch food details when selectedFood changes
     if (selectedFood) {
       fetch(
-        import.meta.env.VITE_EXPRESS_API + `/foods/get-food-details/${selectedFood._id}`
+        import.meta.env.VITE_EXPRESS_API +
+          `/foods/get-food-details/${selectedFood._id}`
       )
         .then((response) => response.json())
         .then((data) => setFoodDetails(data))
@@ -44,6 +45,32 @@ const FoodListByUser = ({ userEmail }) => {
   const closeModal = () => {
     setSelectedFood(null);
     setIsModalOpen(false);
+  };
+
+  const handleUpdate = (updatedData) => {
+    fetch(
+      import.meta.env.VITE_EXPRESS_API +
+        `/foods/updateFood/${selectedFood._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      }
+    )
+      .then((response) => {
+        if (!response.ok) {
+          toast.error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        toast.error("Error:", error);
+      });
   };
 
   return (
@@ -80,7 +107,17 @@ const FoodListByUser = ({ userEmail }) => {
           <div>
             <h2>{selectedFood.foodName}</h2>
             {/* Add your update form or content here */}
-            <button onClick={closeModal}>Close Modal</button>
+            {foodDetails ? (
+              // Render your update form or content here
+              <UpdateFoodForm
+                foodDetails={foodDetails}
+                onUpdate={handleUpdate}
+                onCancel={closeModal}
+              />
+            ) : (
+              // Display a loading message or other indication
+              <p>Loading food details...</p>
+            )}
           </div>
         )}
       </Modal>

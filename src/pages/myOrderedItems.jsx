@@ -1,15 +1,11 @@
 // OrderedItemsByUser.js
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/authContext";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const OrderedItemsByUser = () => {
   const { user } = useAuth();
   const [orderedItems, setOrderedItems] = useState([]);
-
-  console.log(
-    import.meta.env.VITE_EXPRESS_API +
-      `/purchases/ordered-items-by-user/${user?.email}`
-  );
 
   useEffect(() => {
     if (user?.email) {
@@ -24,6 +20,31 @@ const OrderedItemsByUser = () => {
         );
     }
   }, [user?.email]);
+
+  const handleDeleteItem = (itemId) => {
+    console.log(itemId)
+    // Make API request to delete the item with the given itemId
+    fetch(
+      import.meta.env.VITE_EXPRESS_API + `/purchases/delete-item/${itemId}`, // Adjust the API endpoint as needed
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          // Update the state to reflect the deletion
+          setOrderedItems((prevItems) =>
+            prevItems.filter((item) => item.id !== itemId)
+          );
+        } else {
+          console.error("Error deleting item:", response.statusText);
+        }
+      })
+      .catch((error) => console.error("Error deleting item:", error));
+  };
 
   return (
     <div className="max-w-screen-lg mx-auto mt-8">
@@ -42,6 +63,7 @@ const OrderedItemsByUser = () => {
               <th className="py-2 px-4 border-b text-left">Quantity</th>
               <th className="py-2 px-4 border-b text-left">Owner</th>
               <th className="py-2 px-4 border-b text-left">Purchase Date</th>
+              <th className="py-2 px-4 border-b text-left">Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -57,9 +79,19 @@ const OrderedItemsByUser = () => {
                 <td className="py-2 px-4 border-b text-left">
                   {item.quantity}
                 </td>
-                <td className="py-2 px-4 border-b text-left">{item.foodOwner}</td>
+                <td className="py-2 px-4 border-b text-left">
+                  {item.foodOwner}
+                </td>
                 <td className="py-2 px-4 border-b text-left">
                   {new Date(item.purchaseDate).toLocaleDateString()}
+                </td>
+                <td className="py-2 px-4 border-b text-left">
+                  <button
+                    onClick={() => handleDeleteItem(item._id)} // Assuming item.id is unique for each item
+                    className="text-red-500 hover:text-red-700 focus:outline-none"
+                  >
+                    <RiDeleteBin6Line />
+                  </button>
                 </td>
               </tr>
             ))}
