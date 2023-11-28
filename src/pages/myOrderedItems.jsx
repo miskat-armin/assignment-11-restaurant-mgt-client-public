@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/authContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { toast } from "react-toastify";
 
 const OrderedItemsByUser = () => {
   const { user } = useAuth();
@@ -37,13 +38,14 @@ const OrderedItemsByUser = () => {
         if (response.ok) {
           // Update the state to reflect the deletion
           setOrderedItems((prevItems) =>
-            prevItems.filter((item) => item.id !== itemId)
+            prevItems.filter((item) => item._id !== itemId)
           );
+          toast.success("Deleted successfully")
         } else {
-          console.error("Error deleting item:", response.statusText);
+          toast.error("Error deleting item:", response.statusText);
         }
       })
-      .catch((error) => console.error("Error deleting item:", error));
+      .catch((error) => toast.error("Error deleting item:", error));
   };
 
   return (
