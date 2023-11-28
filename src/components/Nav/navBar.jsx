@@ -76,12 +76,12 @@ const Header = () => {
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="avatar m-2">
                 <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src={user.photoURL} alt={user.displayName} />
+                  <img src={user.photoURL} alt={user?.displayName} />
                 </div>
               </div>
               <ul className="dropdown-content z-[1] menu shadow bg-base-100 rounded-box">
                 <li>
-                  { user.displayName && <span className="block text-sm">{user.displayName}</span>}
+                  { user?.displayName && <span className="block text-sm">{user?.displayName}</span>}
                   <span className="block truncate text-sm font-medium">
                     {user.email}
                   </span>

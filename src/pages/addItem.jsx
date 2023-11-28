@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/authContext";
+import { toast } from "react-toastify";
 
 const AddItem = () => {
   const { user } = useAuth(); // Assuming useAuth() returns the Firebase user object
@@ -62,8 +63,6 @@ const AddItem = () => {
         foodImage: imageUrl,
       });
 
-      console.log(formData);
-
       // Send POST request to your MongoDB database
       const response = await fetch(
         import.meta.env.VITE_EXPRESS_API + "/foods/add-item",
@@ -83,14 +82,14 @@ const AddItem = () => {
 
       if (response.ok) {
         // Handle success
-        console.log("Item added successfully");
+        toast.success("Item added successfully");
       } else {
         // Handle error
-        console.error("Error adding item");
+       toast.error("Error adding item");
       }
     } catch (error) {
       // Handle error
-      console.error("Error:", error);
+      toast.error("Error:", error);
     }
   };
 

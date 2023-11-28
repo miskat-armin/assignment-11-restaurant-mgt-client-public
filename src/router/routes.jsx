@@ -8,6 +8,7 @@ import Items from "../pages/items.jsx";
 import Blog from "../pages/blog.jsx";
 import AddItem from "../pages/addItem.jsx";
 import Item from "../pages/item.jsx";
+import OrderPage from "../pages/orderPage.jsx";
 
 const CustomRouter = createBrowserRouter([
   {
@@ -40,8 +41,12 @@ const CustomRouter = createBrowserRouter([
         element: <AddItem />,
       },
       {
-        path: "/:item",
+        path: "all-items/:item",
         element: <Item />,
+      },
+      {
+        path: "/order-item",
+        element: <OrderPage />,
       },
       
     ],

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Items = () => {
   const [foods, setFoods] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch all food items
-    fetch(import.meta.env.VITE_EXPRESS_API + `/foods/get-all-foods/${currentPage}`)
+    fetch(
+      import.meta.env.VITE_EXPRESS_API + `/foods/get-all-foods/${currentPage}`
+    )
       .then((response) => response.json())
       .then((data) => setFoods(data))
       .catch((error) => console.error("Error fetching food items:", error));
@@ -23,8 +25,6 @@ const Items = () => {
     );
     setFoods(filteredFoods);
   };
-
-
 
   return (
     <div className="max-w-screen-lg mt-4 mx-auto">
@@ -73,7 +73,7 @@ const Items = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   // Add logic to handle details button click (e.g., navigate to details page)
-                  navigate(`/${food._id}`)
+                  navigate(`/all-items/${food._id}`);
                 }}
               >
                 View details
@@ -86,7 +86,9 @@ const Items = () => {
 
       <div className="mt-4 flex justify-center">
         <button
-          onClick={() => setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))}
+          onClick={() =>
+            setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))
+          }
           className="px-4 py-2 mr-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none"
         >
           Previous
