@@ -135,7 +135,7 @@ const Registration = () => {
             />
 
             <Link
-              to={"/login"}
+              to={"/signin"}
               className="md:hidden self-center text-blue-500 underline"
             >
               Already logged in?
@@ -144,7 +144,7 @@ const Registration = () => {
           <div className="w-full md:w-1/2 px-4 flex flex-col items-center mb-10 md:mb-0 mt-10 md:mt-0">
             <img src="/Signup.svg" alt="signup" className="lg:w-[90%]" />
             <Link
-              to={"/login"}
+              to={"/signin"}
               className="hidden md:block mt-5 text-blue-500 underline"
             >
               Already logged in?
