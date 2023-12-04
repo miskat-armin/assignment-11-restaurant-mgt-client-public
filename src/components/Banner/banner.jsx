@@ -1,6 +1,10 @@
+import { useNavigate } from 'react-router-dom'
+
 const Banner = () => {
+
+  const navigate = useNavigate()
   const handleClick = () => {
-    
+    navigate('/all-items')
   }
   return (
     <div
@@ -13,11 +17,10 @@ const Banner = () => {
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">
-            Discover Your Digital Playground
+          Culinary Harmony: Empower Your Restaurant with Precision Management
           </h1>
           <p className="mb-5">
-            Explore an Infinite Array of Brands, Unleash Your Tech Fantasies,
-            and Elevate Your Digital Experience to New Heights
+          Unlock Seamless Operations, Delightful Dining Experiences, and Culinary Excellence with Our Restaurant Management Platform!
           </p>
           <button onClick={handleClick} className="btn btn-primary">
             Get Started

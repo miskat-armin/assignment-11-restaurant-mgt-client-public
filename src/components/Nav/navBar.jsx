@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className="shadow-lg sticky top-0 w-full bg-white lg:bg-opacity-60 z-50">
       <div className="mx-auto flex lg:justify-between items-center px-4 md:px-10">
-        <h1 className="text-2xl font-semibold lg:block hidden">Your Logo</h1>
+        <h1 className="text-2xl font-semibold lg:block hidden">Food guide</h1>
         {/* Hamburger menu button for mobile */}
         <button
           onClick={toggleMobileMenu}

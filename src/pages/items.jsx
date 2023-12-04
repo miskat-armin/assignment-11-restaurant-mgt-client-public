@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const Items = () => {
   const [foods, setFoods] = useState([]);
@@ -8,6 +9,7 @@ const Items = () => {
 
   const navigate = useNavigate();
 
+  useDocumentTitle('All items')
   useEffect(() => {
     // Fetch all food items
     fetch(

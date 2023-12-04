@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/authContext";
+import axios from 'axios';
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -43,6 +44,44 @@ const Signin = () => {
     SignIn(email.trim(), password)
       .then((res) => {
         toast.success("Successful log in");
+
+        const user = res.user;
+
+        // axios.post(import.meta.env.VITE_EXPRESS_API + '/jwt', {
+        //   email: user.email,
+        // }, {
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   withCredentials: true,
+        // })
+        //   .then((response) => {
+        //     console.log(response.data);
+        //   })
+        //   .catch((error) => {
+        //     console.error('Error fetching token:', error);
+        //   });
+
+        // fetch(import.meta.env.VITE_EXPRESS_API + "/jwt", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({ email: user.email }),
+        //   credentials: "include",
+        // })
+        //   .then((response) => {
+        //     if (!response.ok) {
+        //       throw new Error(`HTTP error! Status: ${response.status}`);
+        //     }
+        //     return response.json();
+        //   })
+        //   .then((data) => {
+        //     console.log(data);
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error fetching token:", error);
+        //   });
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -53,7 +92,7 @@ const Signin = () => {
   return (
     <div className="flex justify-center items-center min-h-screen mx-auto mt-5 md:mt-0">
       <div className="card flex justify-center shadow-xl md:min-h-[80vh] md:w-[90%] mx-2 rounded-lg w-full border-2">
-        <div className="flex flex-col-reverse md:flex-row justify-center items- mx-2">vb c
+        <div className="flex flex-col-reverse md:flex-row justify-center items- mx-2">
           <form
             className="w-full md:w-1/2 flex flex-col items-start lg:pl-32 md:pl-16 gap-4"
             onSubmit={handleSubmit}

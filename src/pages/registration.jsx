@@ -3,12 +3,14 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/authContext";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const axiosSecure = useAxiosSecure();
 
   const navigate = useNavigate();
   const { state } = useLocation();

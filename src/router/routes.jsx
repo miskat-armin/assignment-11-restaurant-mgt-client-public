@@ -11,6 +11,7 @@ import Item from "../pages/item.jsx";
 import OrderPage from "../pages/orderPage.jsx";
 import OrderedItemsByUser from "../pages/myOrderedItems.jsx";
 import FoodListByUser from "../pages/myAddedItems.jsx";
+import PrivateRoute from "../privateRotue/private.jsx";
 
 const CustomRouter = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const CustomRouter = createBrowserRouter([
       },
       {
         path: "/all-items",
-        element: <Items />,
+        element: <PrivateRoute><Items /></PrivateRoute>,
       },
       {
         path: "/blog",
@@ -40,23 +41,23 @@ const CustomRouter = createBrowserRouter([
       },
       {
         path: "/add-item",
-        element: <AddItem />,
+        element: <PrivateRoute><AddItem /></PrivateRoute>,
       },
       {
         path: "all-items/:item",
-        element: <Item />,
+        element: <PrivateRoute><Item /></PrivateRoute>,
       },
       {
         path: "/order-item",
-        element: <OrderPage />,
+        element: <PrivateRoute><OrderPage /></PrivateRoute>,
       },
       {
         path: "/myOrderedItems",
-        element: <OrderedItemsByUser />,
+        element: <PrivateRoute><OrderedItemsByUser /></PrivateRoute>
       },
       {
         path: "/myAddedItems",
-        element: <FoodListByUser />,
+        element: <PrivateRoute><FoodListByUser /></PrivateRoute>
       }
       
     ],

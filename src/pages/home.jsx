@@ -7,7 +7,7 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 const Home = () => {
   useDocumentTitle("Home");
   return (
-    <div>
+    <div className="flex flex-col gap-10">
       <Banner />
       <TopOrderedItems />
       <CustomerReviews />
